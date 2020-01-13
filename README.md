@@ -17,9 +17,9 @@ But wait. We are giving up on TDD when we write notebooks. This is because on th
 
 ## How?
 
-Okay, so we should keep using notebooks. But how to do that? Here is one solution: to grow your app out of your notebook. Yes, you'll first code the most basic things, and you'll need to **extract what you code to external python files you will import**. The easiest example I have of this is in [that machine learning project of mine](https://github.com/guillaume-chevalier/seq2seq-signal-prediction), it's possible to observe that I extracted the data loading functions to an external file. The notebook remains an exercice or tutorial, but for a more serious project, more logic would have ben extracted out of the notebook. 
+Okay, so we should keep using notebooks. But how to do that? Here is one solution: to grow your app out of your notebook. Yes, you'll first code the most basic things, and you'll need to **extract what you code to external python files you will import**. The easiest example I have of this is in [that machine learning project of mine](https://github.com/guillaume-chevalier/seq2seq-signal-prediction), it's possible to observe that I extracted the data loading functions to an external file. The notebook remains an exercise or tutorial, but for a more serious project, more logic would have ben extracted out of the notebook. 
 
-And what about tests? Well, tests have three parts: first, you prepare it, then you execute it, and finally you assert that everything is as expected. Look at how you code when working with notebooks. Your code looks like a little intro, then a little interlude, and the finale. How to do your unit tests? Well, the intro should look most of the time like a test set-up. Maybe you're loading data from your external data loading function you aldready extracted. The little interlude is the logic you're currently implementing. You should make a class out of it, or at least something, such as mere functions. Then your finale mostly looks like the moment where you assert in your tests. When you're ready, create your tests out of those three parts of your notebook. Okay - this will be a big test. Much like an acceptance test, which is often called a functional test in the industry. This is normally the first test you write. Well, you've got it written here - it's only that it's not yet extracted to a test file. Your reflex might be to only extract the execution (interlude) of your notebook out to a function and move on. 
+And what about tests? Well, tests have three parts: first, you prepare it, then you execute it, and finally you assert that everything is as expected. Look at how you code when working with notebooks. Your code looks like a little intro, then a little interlude, and the finale. How to do your unit tests? Well, the intro should look most of the time like a test set-up. Maybe you're loading data from your external data loading function you already extracted. The little interlude is the logic you're currently implementing. You should make a class out of it, or at least something, such as mere functions. Then your finale mostly looks like the moment where you assert in your tests. When you're ready, create your tests out of those three parts of your notebook. Okay - this will be a big test. Much like an acceptance test, which is often called a functional test in the industry. This is normally the first test you write. Well, you've got it written here - it's only that it's not yet extracted to a test file. Your reflex might be to only extract the execution (interlude) of your notebook out to a function and move on. 
 
 But a better thing to do is not only to do that, but also to then extract your test instead of "just scrapping" what you just coded in this notebook. Because let's face it: most of the time this setup would either change so much that in a few moments your notebook wouldn't look the same, or it would be thrown away. This is your test. It needs to be taken care of if you want your application to be stable. Extract a test before it's too late. 
 
@@ -30,7 +30,7 @@ Okay, so you understand the big picture on how to write viable software with not
 
 ### What about the architecture?
 
-There is more to building an app to extracting functions to external files. At some point, your application is going to grow from the grounds up. This is a nice moment to setup a layered architecture. For example, you could adhere to the principles of the [Domain Driven Design](https://martinfowler.com/tags/domain%20driven%20design.html) or of the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html). For example, I grew a service and domain layer out of notebooks when working recently on a [machine learning document clustering](https://github.com/ArtificiAI/Multilingual-Latent-Dirichlet-Allocation-LDA) service for a client at my [consulting company](http://www.neuraxio.com/en/). 
+There is more to building an app to extracting functions to external files. At some point, your application is going to grow from the grounds up. This is a nice moment to setup a layered architecture. For example, you could adhere to the principles of the [Domain Driven Design](https://martinfowler.com/tags/domain%20driven%20design.html) or of the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html). For example, I grew a service and domain layer out of notebooks when working recently on a [document clustering](https://github.com/ArtificiAI/Multilingual-Latent-Dirichlet-Allocation-LDA) project for a client at my [machine learning consulting company](https://www.neuraxio.com/en/). 
 
 *Side note: I also grew some Machine-Learning-oriented layers in [a recent school project of mine](https://github.com/guillaume-chevalier/Sentiment-Classification-and-Language-Detection) (such as a pipeline layer and a pipeline object layer for the nice "[pipe and filter](https://docs.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters)" machine learning data pipeline pattern) - but note that no tests were made for the time being, given it was a school project that will probably only be useful for reference. One very prolific pattern that I've found for machine learning projects is the pipe and filter pattern as implemented in scikit-learn's [Pipeline](https://scikit-learn.org/stable/tutorial/statistical_inference/putting_together.html) object for which it's easy to add new pipeline elements as classes that inherit from some base pipeline element classes. It's easy to transform and to fit data in multiple consecutive steps with this pattern.*
 
@@ -81,11 +81,17 @@ Copyright (c) 2018 Guillaume Chevalier
 - [GitHub](https://github.com/guillaume-chevalier/)
 - [Quora](https://www.quora.com/profile/Guillaume-Chevalier-2)
 - [YouTube](https://www.youtube.com/c/GuillaumeChevalier)
-- [Dev/Consulting](http://www.neuraxio.com/en/)
+- [Machine Learning Consulting](https://www.neuraxio.com/en/)
 
 ### Liked this article? Did it help you? Leave a [star](https://github.com/guillaume-chevalier/How-to-grow-neat-software-architecture-out-of-jupyter-notebooks/stargazers), [fork](https://github.com/guillaume-chevalier/How-to-grow-neat-software-architecture-out-of-jupyter-notebooks/network/members) and share the love!
 
 This article has been seen in:
 - [HackerNews' 1st page](https://news.ycombinator.com/item?id=18661303)
+- [Nat Torkington's ideas list, O'Reilly Media](https://www.oreilly.com/ideas/four-short-links-12-december-2018)
 - [PyCoder's Weekly](https://pycoders.com/issues/346)
 - And more.
+
+### Related article
+
+> #### [How to Code Neat Machine Learning Pipelines](https://www.neuraxio.com/en/blog/neuraxle/2019/10/26/neat-machine-learning-pipelines.html)
+> [![](https://www.neuraxio.com/en/blog/assets/pipeline_1_small.jpg)](https://www.neuraxio.com/en/blog/neuraxle/2019/10/26/neat-machine-learning-pipelines.html)
